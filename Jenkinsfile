@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3914"
+        jdk "JDK21"
+    }
+
+    stages {
+        stage('Echo Version'){
+            steps{
+                sh 'echo Print Maven Version'
+                sh 'mvn -version'
+            }
+        }
+        stage('Checkout'){
+            steps{
+                  //Get some code from GIT repo
+                //git branch: 'main', url: 'https://github.com/benny323/jenkins-hello-world.git'
+            }
+        }
+        stage('Build'){
+            steps{
+                //Run Maven Package CMD
+                sh "mvn clean package -DskipTests=true"
+            }
+        }
+        stage('Unit Test'){
+            steps{
+                sh "mvn test"
+            }
+        }
+    }
+}
