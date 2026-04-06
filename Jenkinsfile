@@ -18,6 +18,7 @@ pipeline {
             steps{
                   //Get some code from GIT repo
                 //git branch: 'main', url: 'https://github.com/benny323/jenkins-hello-world.git'
+                echo "Skip this branch, code get from SCM"
             }
         }
         stage('Build'){
